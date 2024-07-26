@@ -1,0 +1,78 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* Make sure the RetroGrid covers the entire page */
+.background-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Style for the RetroGrid component */
+.retro-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Ensure it is behind the content */
+}
+
+/* Style for the main content container */
+.content-container {
+  position: relative;
+  top: -60px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Dark mode toggle button */
+.toggle-dark-mode-button {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.center-heading {
+  text-align: center;
+  font-size: 2rem; /* Adjust size as needed */
+  color: gold; /* Adjust color as needed */
+}
+
+.footer {
+  margin-top: auto; /* Push the footer to the bottom */
+  padding: 10px;
+  text-align: center;
+  background-color: #f8f9fa; /* Light background color */
+  color: #333;
+  border-top: 1px solid #e0e0e0; /* Optional border for visual separation */
+}
