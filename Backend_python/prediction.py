@@ -242,7 +242,8 @@ def predict(player_1, player_2,model_type):
     plt.legend(loc=4)
 
     # Save the plot as a file
-    plt.savefig('prediction_model/Website/frontend_ts/src/roc_curve.png')
+    root = os.path.dirname(pythonfilepath)
+    plt.savefig(root + '/frontend_ts/src/roc_curve.png')
     plt.close()
 
     return result
@@ -407,7 +408,8 @@ def predict_singlePlayer(player_1,model_type):
     plt.legend(loc=4)
 
     # Save the plot as a file
-    plt.savefig('prediction_model/Website/frontend_ts/src/roc_curve.png')
+    root = os.path.dirname(pythonfilepath)
+    plt.savefig(root + '/frontend_ts/src/roc_curve.png')
     plt.close()
 
 
