@@ -74,9 +74,13 @@ const Main = () => {
   return (
     <React.StrictMode>
       <div className={`background-container`}>
-        <h1 className="center-heading">
-          <FlipText className="text-4xl font-bold tracking-[-0.1em] text-black dark:text-white md:text-7xl md:leading-[5rem]"
+        <h1 className="center-heading" >
+          <FlipText className="text-4xl font-bold tracking-[-0.1em] text-black dark:text-white md:leading-[5rem] text-wrap"
               word="Welcome to the Chess Prediction model" />
+        </h1>
+        <h1 className='Mobile'>
+        <FlipText className="text font-bold tracking-[-0.1em] text-black dark:text-white md:leading-[5rem] text-wrap"
+              word="Chess Prediction model" />
         </h1>
         <RetroGrid className={`retro-grid ${prefersDarkMode ? 'bg-black' : 'bg-white'}`} />
         <div className="content-container">
@@ -87,7 +91,7 @@ const Main = () => {
             Toggle {isDarkMode ? 'light' : 'dark'} Mode
           </button> */}
           <App />
-          <div className="relative">
+          <div className="relative Dock">
           <Dock direction="middle">
             <DockIcon href="https://github.com/SinghDevanshh" >
               <Icons.gitHub className="size-6" />

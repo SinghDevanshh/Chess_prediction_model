@@ -67,7 +67,7 @@ const PredictionForm: React.FC = () => {
         </form>
       </div>
       {result && (
-        <div className="result-section">
+        <div className="result-section" >
           <h3><SparklesText text="Results" /></h3>
           <p>Accuracy: {result.Accuracy}</p>
           <p>Precision: {result.Precision}</p>

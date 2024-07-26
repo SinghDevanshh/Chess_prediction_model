@@ -64,8 +64,9 @@ code {
 
 .center-heading {
   text-align: center;
-  font-size: 2rem; /* Adjust size as needed */
-  color: gold; /* Adjust color as needed */
+  font-size: 1rem; 
+  color: gold; 
+  margin-bottom: 50px;
 }
 
 .footer {
@@ -75,4 +76,91 @@ code {
   background-color: #f8f9fa; /* Light background color */
   color: #333;
   border-top: 1px solid #e0e0e0; /* Optional border for visual separation */
+}
+
+.Mobile{
+  display: none;
+  color: #fff;
+  text-wrap: wrap;
+  text-align: center;
+  justify-content: center;
+  animation: fadeInAnimation ease 3s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  @keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+  }
+}
+
+.Dock{
+  bottom: 80px;
+}
+
+@media (max-width: 768px) {
+  h1{
+    display: none;
+  }
+
+  .Mobile{
+    display: flex;
+    color: #fff;
+    text-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    @keyframes fadeInAnimation {
+      0% {
+          opacity: 0;
+      }
+
+      100% {
+          opacity: 1;
+      }
+  }
+  }
+
+  .Dock{
+    bottom: 100px;
+  }
+
+}
+
+
+@media (max-width: 480px) {
+  h1{
+    display: none;
+  }
+
+  .Mobile{
+    display: flex;
+    color: #fff;
+    text-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    animation: fadeInAnimation ease 3s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+    @keyframes fadeInAnimation {
+      0% {
+          opacity: 0;
+      }
+
+      100% {
+          opacity: 1;
+      }
+  }
+  }
+
+  .Dock{
+    display: none;
+  }
+
 }
