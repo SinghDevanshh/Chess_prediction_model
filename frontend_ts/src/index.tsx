@@ -52,6 +52,10 @@ const Main = () => {
   };
 
   useEffect(() => {
+    document.title = 'Chess Prediction Model';
+  }, []);
+
+  useEffect(() => {
     if (isDarkMode) {
       document.body.classList.add('dark');
     } else {

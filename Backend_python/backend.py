@@ -24,6 +24,13 @@ def predict_route():
         model_type = 'RandomForest'
 
     if player1 == player2:
+        result_final = {
+        'Accuracy': "Nice try :)",
+        'Precision': "Select two different players to predict something",
+        'Predictions': [1,1,1,1,1]
+
+        }
+
         return jsonify(message="Select two different players :)"), 400
 
     if player2 == 'All (Default Single player mode)':
@@ -39,7 +46,8 @@ def predict_route():
     result_final = {
         'Accuracy': result['Accuracy'],
         'Precision': result['Precision'],
-        'Predictions': result['predictions'][0:5]
+        'Predictions': result['predictions'][0:5],
+        'message': None
     }
 
     # Return the result and image URL as a dictionary

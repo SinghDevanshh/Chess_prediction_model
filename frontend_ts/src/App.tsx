@@ -8,9 +8,10 @@ import ShimmerButton from "./components/Shimer-button";
 
 
 interface Result {
-  Accuracy: number;
-  Precision: number;
+  Accuracy: string | number;
+  Precision: string | number;
   Predictions: number[];
+  message?: string;
 }
 
 const PredictionForm: React.FC = () => {
@@ -22,10 +23,16 @@ const PredictionForm: React.FC = () => {
   const [player2, setPlayer2] = useState<string>(players2[0]);
   const [model, setModel] = useState<string>(models[0]);
   const [result, setResult] = useState<Result | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setLoading(true);
 
+    // http://127.0.0.1:5000/predict_route
+    // https://chess-prediction-model-backend.onrender.com/predict_route
+    
     const response = await fetch('https://chess-prediction-model-backend.onrender.com/predict_route', {
       method: 'POST',
       headers: {
@@ -36,6 +43,7 @@ const PredictionForm: React.FC = () => {
 
     const data = await response.json();
     setResult(data);
+    setLoading(false);
   };
 
   return (
@@ -66,21 +74,36 @@ const PredictionForm: React.FC = () => {
             </ShimmerButton>
         </form>
       </div>
-      {result && (
-        <div className="result-section" >
-          <h3><SparklesText text="Results" /></h3>
-          <p>Accuracy: {result.Accuracy}</p>
-          <p>Precision: {result.Precision}</p>
-          <p>Predictions: {result.Predictions.join(', ')}</p>
-          <ShineBorder
-            className="relative flex items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl" 
-            color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
-          >
-            <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
-            <img src={rocCurve} style={{margin: "0px"}} alt="ROC Curve" />
-            </span>
-          </ShineBorder>
+      {loading ? (
+        <div className="loading-section">
+          <p><SparklesText text="Loading, please wait..." /></p>
         </div>
+      ) : (
+        result && (
+          <div className="result-section">
+            {result.message ? (
+              <div>
+                <h3><SparklesText text="Cheeky Message" /></h3>
+                <p>{result.message}</p>
+              </div>
+            ) : (
+              <div>
+                <h3><SparklesText text="Results" /></h3>
+                <p>Accuracy: {result.Accuracy}</p>
+                <p>Precision: {result.Precision}</p>
+                <p>Predictions: {result.Predictions instanceof Array ? result.Predictions.join(', ') : result.Predictions}</p>
+                <ShineBorder
+                  className="relative flex items-center justify-center overflow-hidden rounded-lg border bg-background md:shadow-xl" 
+                  color={["#A07CFE", "#FE8FB5", "#FFBE7B"]}
+                >
+                  <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-300/80 bg-clip-text text-center text-8xl font-semibold leading-none text-transparent dark:from-white dark:to-slate-900/10">
+                    <img src={rocCurve} style={{margin: "0px"}} alt="ROC Curve" />
+                  </span>
+                </ShineBorder>
+              </div>
+            )}
+          </div>
+        )
       )}
     </div>
   );
