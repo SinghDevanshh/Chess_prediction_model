@@ -83,7 +83,7 @@ const PredictionForm: React.FC = () => {
           <div className="result-section">
             {result.message ? (
               <div>
-                <h3><SparklesText text="Cheeky Message" /></h3>
+                <h3><SparklesText text="Nice Try" /></h3>
                 <p>{result.message}</p>
               </div>
             ) : (
